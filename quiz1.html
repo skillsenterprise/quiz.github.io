@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Liberation Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, p {
+      text-align: center;
+    }
+    form {
+      margin-top: 20px;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Digital Liberation Quiz</h1>
+<p>Test your knowledge about the "Digital Liberation" scenario.</p>
+
+<form id="quizForm">
+  <ol>
+    <li>
+      <p>1. What is Sharmila's initial feeling about the online world?</p>
+      <label><input type="radio" name="q1" value="a"> Excitement</label>
+      <label><input type="radio" name="q1" value="b"> Overwhelmed and scared</label>
+      <label><input type="radio" name="q1" value="c"> Indifferent</label>
+      <label><input type="radio" name="q1" value="d"> Curious</label>
+    </li>
+    <li>
+      <p>2. According to Jaleel, what is a crucial aspect of navigating the online world?</p>
+      <label><input type="radio" name="q2" value="a"> Perfectly curating your online image</label>
+      <label><input type="radio" name="q2" value="b"> Ignoring privacy concerns</label>
+      <label><input type="radio" name="q2" value="c"> Finding a balance with privacy</label>
+      <label><input type="radio" name="q2" value="d"> Avoiding all forms of online communication</label>
+    </li>
+    <li>
+      <p>3. What is one piece of advice Jaleel gives Sharmila about dealing with judgment online?</p>
+      <label><input type="radio" name="q3" value="a"> Ignore everyone's opinions</label>
+      <label><input type="radio" name="q3" value="b"> Share only positive experiences</label>
+      <label><input type="radio" name="q3" value="c"> Remember that people are usually too absorbed in their own online lives to worry about yours</label>
+      <label><input type="radio" name="q3" value="d"> Delete negative comments immediately</label>
+    </li>
+    <li>
+      <p>4. How does Jaleel encourage Sharmila to view mistakes made online?</p>
+      <label><input type="radio" name="q4" value="a"> Mistakes should be avoided at all costs</label>
+      <label><input type="radio" name="q4" value="b"> Mistakes are opportunities for growth and learning</label>
+      <label><input type="radio" name="q4" value="c"> Mistakes define your online reputation</label>
+      <label><input type="radio" name="q4" value="d"> Mistakes are a sign of incompetence</label>
+    </li>
+    <li>
+      <p>5. What does Jaleel compare the online world to when advising Sharmila?</p>
+      <label><input type="radio" name="q5" value="a"> A battleground</label>
+      <label><input type="radio" name="q5" value="b"> A library</label>
+      <label><input type="radio" name="q5" value="c"> An extension of oneself</label>
+      <label><input type="radio" name="q5" value="d"> A one-way street</label>
+    </li>
+  </ol>
+
+  <button type="button" onclick="submitQuiz()">Submit</button>
+</form>
+
+<script>
+  let attempts = 0;
+
+  function submitQuiz() {
+    attempts++;
+
+    const answers = ["b", "c", "c", "b", "c"]; // Replace with correct answers
+
+    let score = 0;
+
+    for (let i = 1; i <= answers.length; i++) {
+      const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+
+      if (selectedOption) {
+        if (selectedOption.value === answers[i - 1]) {
+          score++;
+        }
+      }
+    }
+
+    if (attempts < 3) {
+      alert(`You scored ${score} out of ${answers.length}. Try again!`);
+    } else {
+      alert(`Quiz completed. You scored ${score} out of ${answers.length}. Here are the correct answers:\n\n1. b\n2. c\n3. c\n4. b\n5. c`);
+      document.getElementById("quizForm").reset();
+      attempts = 0;
+    }
+  }
+</script>
+
+</body>
+</html>
